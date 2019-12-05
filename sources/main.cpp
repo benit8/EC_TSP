@@ -104,25 +104,24 @@ int main(int ac, char **av)
 
 			if (generation == generations)
 				paused = true;
-
-			window.clear(sf::Color::Black);
-			// Draw cities
-			for (auto &n : graph.nodes()) {
-				dot.setPosition((float)n.x * drawScale, (float)n.y * drawScale);
-				window.draw(dot, states);
-			}
-			// Draw routes
-			auto &best = pop.best();
-			for (size_t i = 1; i < best.genes().size(); ++i) {
-				sf::Vertex line[2] = {
-					sf::Vertex( sf::Vector2f(best.gene(i - 1).x, best.gene(i - 1).y) * drawScale ),
-					sf::Vertex( sf::Vector2f(best.gene(i).x, best.gene(i).y) * drawScale )
-				};
-				window.draw(line, 2, sf::Lines, states);
-			}
-			window.draw(debugText);
 		}
 
+		window.clear(sf::Color::Black);
+		// Draw cities
+		for (auto &n : graph.nodes()) {
+			dot.setPosition((float)n.x * drawScale, (float)n.y * drawScale);
+			window.draw(dot, states);
+		}
+		// Draw routes
+		auto &best = pop.best();
+		for (size_t i = 1; i < best.genes().size(); ++i) {
+			sf::Vertex line[2] = {
+				sf::Vertex( sf::Vector2f(best.gene(i - 1).x, best.gene(i - 1).y) * drawScale ),
+				sf::Vertex( sf::Vector2f(best.gene(i).x, best.gene(i).y) * drawScale )
+			};
+			window.draw(line, 2, sf::Lines, states);
+		}
+		window.draw(debugText);
 		window.display();
 	}
 
