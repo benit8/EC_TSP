@@ -63,10 +63,13 @@ Population::Individual Population::Individual::cross(const Individual &other)
 
 void Population::Individual::mutate(double mutationRate)
 {
-
 	for (size_t i = 0; i < m_genes.size(); ++i) {
-		if (dRand() < mutationRate)
-			std::swap(m_genes[i], m_genes[g_rng() % m_genes.size()]);
+		if (dRand() < mutationRate) {
+			// std::swap(m_genes[i], m_genes[g_rng() % m_genes.size()]);
+			auto start = m_genes.begin() + i;
+			auto end = start + (g_rng() % (m_genes.size() - i));
+			std::reverse(start, end);
+		}
 	}
 }
 
