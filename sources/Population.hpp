@@ -22,6 +22,7 @@ namespace TSP {
 
 extern std::random_device g_rng;
 extern double dRand(double max = 1.0);
+extern double dRand(double min, double max);
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -71,8 +72,8 @@ public:
 	const Individual &best() const { return m_individuals.front(); }
 	const Individual &worst() const { return m_individuals.back(); }
 
-private:
-	std::vector<Individual> buildMatingPool();
+// private:
+// 	std::vector<Individual> buildMatingPool();
 
 private:
 	Graph &m_graph;

@@ -24,8 +24,8 @@
 
 static std::size_t generations    = 3000;
 static std::size_t populationSize = 200;
-static std::size_t eliteCount     = 40;
-static double mutationRate        = 0.0005;
+static std::size_t eliteCount     = 20;
+static double mutationRate        = 0.003;
 
 #ifdef TSP_GRAPHICS
 	static float drawOffset = 50.0f;
